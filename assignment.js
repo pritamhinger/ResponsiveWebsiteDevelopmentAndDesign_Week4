@@ -1,10 +1,10 @@
 // put your javascript code here
 
-var categories_template, animals_template, all_animals_template;//, slideshow_template;
+var categories_template, animals_template, all_animals_template, animal_template;
 
 var current_category = animals_data.category[0];
 var current_photo = current_category.animals[0].image1;
-
+var current_image_src = current_photo
 function showTemplate(template, data){
 	var html    = template(data);
 	$('#content').html(html);
@@ -24,8 +24,8 @@ $(document).ready(function(){
 	source   = $("#all-animals-template").html();
 	all_animals_template = Handlebars.compile(source);
 	
-	// source   = $("#slideshow-template").html();
-	// slideshow_template = Handlebars.compile(source);
+	source   = $("#animal-template").html();
+	animal_template = Handlebars.compile(source);
 
 	
 	$("#all-category-tab").click(function () {
@@ -44,21 +44,18 @@ $(document).ready(function(){
 			
 			showTemplate(animals_template, current_category);
 			
-			// $(".photo-thumbnail").click(function (){
-			// 	// get the index (position in the array)
-			// 	// of the photo we clicked on
-			// 	// "this" is the element that was clicked on
-			// 	// data("id") gets the attribute data-id
-			// 	// (which we set to the index of the photo in
-			// 	// the array - @index)
-			// 	var index = $(this).data("id");
+			$(".crop-img").click(function(){
+				current_image_src = $(this).data("src");
+			});
 
-			// 	// set the current photo to this photo
-			// 	current_photo = current_category.photos[index];
+			$(".photo-thumbnail").click(function (){
+				var src = current_image_src;
+				var index = $(this).data("id");
+				current_animal = current_category.animals[index];
 				
-			// 	// displays the single photo template
-			// 	showTemplate(all-animals_template, current_photo);
-			// });
+				showTemplate(animal_template, current_animal);
+				$("#fullImage").attr("src",src);
+			});
 		});
 	});
 

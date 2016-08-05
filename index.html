@@ -77,8 +77,8 @@
 			{{#each animals}}
 			<div class="col-xs-12 col-md-3"> 
 				<div class="photo-thumbnail"  data-id="{{@index}}">
-					<img class="crop-img" src="{{image1}}" alt=""/> 
-					<img class="crop-img" src="{{image2}}" alt=""/>
+					<img class="crop-img" data-src="{{image1}}" src="{{image1}}" alt=""/> 
+					<img class="crop-img" data-src="{{image2}}" src="{{image2}}" alt=""/>
 					<div class="caption">
 						<h3>{{name}}</h3>
 						<p>{{description}}</p>
@@ -87,6 +87,18 @@
 			</div>
 			{{/each}}
 		</div>
+	</script>
+	<script id="animal-template" type="text/x-handlebars-template">
+  		<div class="row">
+	    	<div class="col-xs-12 col-md-12"> 
+	        	<img class="large-img" id="fullImage" src="" alt=""/> 
+	          
+	        	<div class="caption">
+	            	<h3>{{name}}</h3>
+	            	<p>{{description}}</p>
+	        	</div>
+	      	</div>
+  		</div>
 	</script>
 	<script id="all-animals-template" type="text/x-handlebars-template">
 		<div class="row">
