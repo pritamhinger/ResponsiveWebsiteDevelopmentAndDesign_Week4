@@ -1,6 +1,6 @@
 // put your javascript code here
 
-var categories_template, animals_template;//, photo_template, slideshow_template;
+var categories_template, animals_template, all_animals_template;//, slideshow_template;
 
 var current_category = animals_data.category[0];
 var current_photo = current_category.animals[0].image1;
@@ -21,8 +21,8 @@ $(document).ready(function(){
 	source   = $("#animals-template").html();
 	animals_template = Handlebars.compile(source);
 	
-	// source   = $("#photo-template").html();
-	// photo_template = Handlebars.compile(source);
+	source   = $("#all-animals-template").html();
+	all_animals_template = Handlebars.compile(source);
 	
 	// source   = $("#slideshow-template").html();
 	// slideshow_template = Handlebars.compile(source);
@@ -57,7 +57,7 @@ $(document).ready(function(){
 			// 	current_photo = current_category.photos[index];
 				
 			// 	// displays the single photo template
-			// 	showTemplate(photo_template, current_photo);
+			// 	showTemplate(all-animals_template, current_photo);
 			// });
 		});
 	});
@@ -87,18 +87,18 @@ $(document).ready(function(){
 		// 	current_photo = current_category.photos[index];
 			
 		// 	// displays the single photo template
-		// 	showTemplate(photo_template, current_photo);
+		// 	showTemplate(all-animals_template, current_photo);
 		// });
 	});
 
-	// $("#slideshow-tab").click(function () {
+	$("#all-animals-tabs").click(function () {
 		
-	// 	showTemplate(slideshow_template, current_category);
+		showTemplate(all_animals_template, animals_data);
 		
-	// 	$(".nav-tabs .active").removeClass("active");
+		$(".nav-tabs .active").removeClass("active");
 		
-	// 	$("#slideshow-tab").addClass("active");
-	// });
+		$("#all-animals-tabs").addClass("active");
+	});
 
 	$("#all-category-tab").click();
 
